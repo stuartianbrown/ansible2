@@ -1,0 +1,6 @@
+---
+- hosts: test2
+  connection: local
+  gather_facts: yes
+  roles:
+   - cmd
