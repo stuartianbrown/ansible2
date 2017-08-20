@@ -1,0 +1,110 @@
+---
+
+ - name: Configure interface one
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_1 }} {{ mask_1 }}
+     parents: interface {{ interface_1 }}
+
+ - name: Configure interface two
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_2 }} {{ mask_2 }}
+     parents: interface {{ interface_2 }}
+
+ - name: Configure interface three
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_3 }} {{ mask_3 }}
+     parents: interface {{ interface_3 }}
+   ignore_errors: yes
+
+ - name: Configure interface four
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_4 }} {{ mask_4 }}
+     parents: interface {{ interface_4 }}
+   ignore_errors: yes
+ 
+# - name: Configure interface five
+#   ios_config:
+#     provider: "{{ cli }}"
+#     lines:
+#       - no shut
+#       - ip address {{ ip_address_5 }} {{ mask_5 }}
+#     parents: interface {{ interface_5 }}
+#   ignore_errors: yes
+ 
+ - name: Configure interface loopback one
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_loop_1 }} {{ mask_loop_1 }}
+     parents: interface {{ interface_loop_1 }}
+   ignore_errors: yes
+
+ - name: Configure interface loopback two
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no shut
+       - ip address {{ ip_address_loop_2 }} {{ mask_loop_2 }}
+     parents: interface {{ interface_loop_2 }}
+   ignore_errors: yes
+
+ - name: Configure BGP for all routers
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - neighbor {{ neighbor1 }} remote-as {{ as1 }}
+       - neighbor {{ neighbor2 }} remote-as {{ as2 }}
+       - network {{ network_1 }} mask {{ mask_1 }}
+       - network {{ network_2 }} mask {{ mask_2 }}
+       - timers bgp 2 5 
+       - maximum-paths 4
+     parents: router bgp {{ as_number }}
+   ignore_errors: yes
+
+ - name: Configure further BGP on routers
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - neighbor {{ neighbor3 }} remote-as {{ as3 }}
+       - neighbor {{ neighbor4 }} remote-as {{ as4 }}
+       - network {{ network_3 }} mask {{ mask_3 }}
+       - network {{ network_4 }} mask {{ mask_4 }}
+     parents: router bgp {{ as_number }}
+   ignore_errors: yes
+
+# - name: Configure even further BGP on routers
+#   ios_config:
+#     provider: "{{ cli }}"
+#     lines:
+#       - neighbor {{ neighbor5 }} remote-as {{ as5 }}
+#     parents: router bgp {{ as_number }}
+#   ignore_errors: yes
+
+ - name: Configure loopback network BGP on routers
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - network {{ network_loop_1 }} mask {{ mask_loop_1 }}
+     parents: router bgp {{ as_number }}
+   ignore_errors: yes
+
+ - name: Configure loopback network BGP on routers
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - network {{ network_loop_2 }} mask {{ mask_loop_2 }}
+     parents: router bgp {{ as_number }}
+   ignore_errors: yes

@@ -1,0 +1,10 @@
+---
+ - name: Push config to the device
+   ios_template:
+     username: "{{ username }}"
+     password: "{{ password }}"
+     host: testrouter
+     src: config.j2
+     force: true
+   notify:
+     - write changes

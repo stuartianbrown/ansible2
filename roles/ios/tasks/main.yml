@@ -1,0 +1,39 @@
+---
+- name: Show Command
+  ios_command:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: "{{ host }}"
+    commands:
+#      - show run 
+      - show run int fa0/2
+  register: output
+
+- name: Copy the output
+  local_action: copy content={{ output }} dest=/etc/ansible/conf_files/{{ inventory_hostname }}
+#  with_items: "{{ out }}"
+
+#- name: Show the output
+#  debug: var=output.stdout_lines
+
+#- ios_config:
+#    username: "{{ username }}"
+#    password: "{{ password }}"
+#    host: "{{ host }}"
+#    lines: 
+#      - ip address 5.5.5.5 255.255.255.0
+#      - no shut
+#    parents: ['int gi0/2']
+#    force: no
+#
+#- ios_command:
+#    username: "{{ username }}"
+#    password: "{{ password }}"
+#    host: "{{ host }}"
+#    commands:
+#      - show run int gi0/2
+##      - show run int fa0/2
+#  register: output
+#
+#- name: show debug
+#  debug: var=output.stdout_lines

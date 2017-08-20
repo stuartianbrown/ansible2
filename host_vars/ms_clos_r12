@@ -1,0 +1,26 @@
+---
+ip_address_1: 10.0.1.9
+mask_1: 255.255.255.252
+interface_1: g1/0
+ip_address_2: 10.0.1.13
+mask_2: 255.255.255.252
+interface_2: g2/0
+ip_address_3: 10.0.3.9
+mask_3: 255.255.255.252
+interface_3: g3/0
+ip_address_4: 10.0.3.13
+mask_4: 255.255.255.252
+interface_4: g4/0
+neighbor1: 10.0.1.10
+neighbor2: 10.0.1.14
+neighbor3: 10.0.3.10
+neighbor4: 10.0.3.14
+as1: 65501
+as2: 65502
+as3: 65530
+as4: 65530
+as_number: 65510 
+network_1: 10.0.1.8
+network_2: 10.0.1.12
+network_3: 10.0.3.8
+network_4: 10.0.3.12

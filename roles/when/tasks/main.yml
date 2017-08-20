@@ -1,0 +1,38 @@
+---
+- name: Show Version
+  ios_command:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: test2
+    commands:
+      - sh ver
+  register: output
+
+- name: show debug
+  debug: var=output.stdout_lines
+
+- name: set fact
+  set_fact:
+    ver: 15
+  when: '"Version 15.2(4)S1" in output["stdout"][0]'
+
+- fail: msg="Version not 15"
+  when: ver is not defined
+
+- name: Set Hostname
+  ios_config:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: test2
+    lines: ['hostname AnsibleR2']
+    force: no
+  when: ver == 15
+
+- name: copy run start
+  ios_command:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: test2
+    commands:
+      - write
+

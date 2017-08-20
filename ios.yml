@@ -1,6 +1,6 @@
 ---
-- hosts: test2
+- hosts: test2, test3
   connection: local
   gather_facts: yes
   roles:
-   - cmd
+   - ios

@@ -1,0 +1,21 @@
+interface GigabitEthernet0/2
+ description Internal
+ ip address 3.3.3.3 255.255.255.0
+ no ip redirects
+ standby 1 ip 3.3.3.43
+ standby 1 priority 11
+ standby 1 preempt
+ standby 1 track 1 decrement 20
+ standby 3 ip 3.3.3.33
+ standby 3 priority 11
+ standby 3 preempt
+ standby 3 track 1 decrement 20
+ media-type rj45
+ speed 1000
+ duplex half
+ no negotiation auto
+ no cdp enable
+  no clns route-cache
+
+hostname router
+

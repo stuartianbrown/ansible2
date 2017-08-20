@@ -1,0 +1,10 @@
+---
+device_os: ios
+provider: "{{ cli }}"
+
+cli:
+  host: "{{ios_cli_host | default(inventory_hostname) }}"
+  username: "{{ ios_cli_user | default('cisco') }}"
+  password: "{{ ios_cli_pass | default('cisco') }}"
+  transport: cli
+  authorize: yes

@@ -1,0 +1,8 @@
+---
+ - name: Configure an ios device
+   ios_config:
+     provider: "{{ cli }}"
+     lines:
+       - no standby 20 ip
+       - glbp 20 ip 192.168.1.1
+     parents: interface po1

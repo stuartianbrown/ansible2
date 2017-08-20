@@ -1,0 +1,10 @@
+
+---
+- ios_config:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: "{{ host }}"
+    force: no
+    lines:
+
+      - hostname testrouter 

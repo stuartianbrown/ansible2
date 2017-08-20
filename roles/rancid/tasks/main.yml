@@ -1,0 +1,17 @@
+
+---
+- name: Grab the running config
+  ios_command:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    host: "{{ host }}"
+    commands:
+      - sh run int fa0/2
+  register: output
+
+- name: Copy the running config
+  local_action: copy content={{ output }} dest=/etc/ansible/conf_files/{{ inventory_hostname }}
+
+#- name: Sort out the file
+#  local_action: shell tr '",' '\n' < {{ inventory_hostname }} > {{ inventory_hostname }}
+

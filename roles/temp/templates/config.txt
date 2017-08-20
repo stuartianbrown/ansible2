@@ -1,0 +1,10 @@
+interface GigabitEthernet0/2
+ description Internal
+ ip address 2.2.2.2 255.255.255.0
+ standby 5 ip 2.2.2.1
+ standby 5 priority 1
+ standby 5 preempt
+ standby 5 track 1 decrement 20
+ media-type rj45
+ speed 1000
+ duplex half

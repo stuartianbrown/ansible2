@@ -1,0 +1,22 @@
+
+---
+- ios_command:
+    provider: "{{ cli }}"
+    commands:
+      - sh glbp br
+  register: output
+
+- name: show debug
+  debug: var=output.stdout_lines
+
+#- set_fact:
+#    intf: |
+#      {{output.stdout_lines[0] | 
+#        map('regex_findall','^([A-Za-z]+[0-9./]+)') | 
+#        map('join') | list }}
+#
+#- name: Show fact
+#  debug: var=intf
+#
+#- name: Copy the running config
+#  local_action: copy content={{ output.stdout_lines }} dest=/etc/ansible/conf_files/{{ inventory_hostname }}

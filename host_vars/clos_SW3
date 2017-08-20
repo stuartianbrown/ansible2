@@ -1,0 +1,19 @@
+---
+ip_address_1: 10.0.1.10
+mask_1: 255.255.255.252
+interface_1: f0/0
+ip_address_2: 10.0.2.10
+mask_2: 255.255.255.252
+interface_2: f0/1
+neighbor1: 10.0.1.9
+neighbor2: 10.0.2.9
+as1: 65500
+as2: 65500
+as_number: 65503
+network_1: 10.0.1.8
+network_2: 10.0.2.8
+network_loop: 172.18.0.0
+mask_loop: 255.255.0.0
+ip_address_loop: 172.18.0.1
+interface_loop: lo1
+

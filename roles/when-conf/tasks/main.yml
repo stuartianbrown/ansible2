@@ -1,0 +1,22 @@
+---
+- name: Configure an ios device
+  ios_command:
+    provider: "{{ cli }}"
+    commands:
+      - sh ver
+  register: output
+
+- name: Set fact
+  set_fact:
+    ver: 15
+  when: '"Version 15" in output["stdout"][0]'
+
+- fail: msg="Version not 15"
+  when: ver is not defined
+
+- name: Set Hostname
+  ios_config:
+    provider: "{{ cli }}"
+    lines:
+      - hostname R15_{{ inventory_hostname }}
+  when: ver == 15 

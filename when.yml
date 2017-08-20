@@ -1,0 +1,7 @@
+---
+- hosts: test2
+  remote_user: netadmin
+  connection: local
+  gather_facts: no
+  roles:
+   - when

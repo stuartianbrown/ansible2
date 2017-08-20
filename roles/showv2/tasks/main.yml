@@ -1,0 +1,11 @@
+
+---
+- ios_command:
+    provider: "{{ cli }}"
+    commands:
+
+      - show ip int br | inc 192.168.204.100
+  register: output
+
+- name: show debug
+  debug: var=output.stdout_lines

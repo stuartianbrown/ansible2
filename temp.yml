@@ -1,0 +1,7 @@
+---
+- hosts: testrouter
+  remote_user: netadmin
+  connection: local
+  gather_facts: yes
+  roles:
+   - temp

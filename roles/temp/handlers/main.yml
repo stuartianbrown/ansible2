@@ -1,0 +1,9 @@
+---
+ - name: write changes
+   ios_command:
+     username: "{{ username }}"
+     password: "{{ password }}"
+     host: testrouter
+     commands:
+       - write
+

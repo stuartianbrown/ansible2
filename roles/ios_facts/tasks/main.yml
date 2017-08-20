@@ -1,0 +1,6 @@
+---
+- name: Gather facts from an ios device
+  ios_facts:
+    provider: "{{ cli }}"
+    gather_subset:
+      - all 

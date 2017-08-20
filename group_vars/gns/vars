@@ -1,0 +1,10 @@
+---
+cli:
+  host: "{{ inventory_hostname }}"
+  username: "{{ vault_username }}"
+  password: "{{ vault_password }}"
+  transport: cli
+testr1:
+  ip_address: 10.0.0.1
+testr2:
+  ip_address: 10.0.0.2
